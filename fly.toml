@@ -1,0 +1,16 @@
+app = "proxy-bai"
+
+[build]
+  image = "caddy:2.7.6-alpine"
+
+[[services]]
+  internal_port = 80
+  protocol = "tcp"
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
